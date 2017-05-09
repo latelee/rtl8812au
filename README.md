@@ -4,10 +4,25 @@ According to rtw_version.c the real driver version is 4.3.20.
 
 The branch v4.3.21 may be built for RTL8814AU or RTL8812AU/RTL8821AU chipset. 
 
-for building RTL8812AU/RTL8821AU driver type:
+Known Supported Devices:
+
+```
+* NETCORE NW392 WLAN Adapter RTL8812AU 802.11a/b/g/n/ac(900 AC)
+  ID 0bda:8812 test under ubuntu16.04 kernel: 4.8.0&4.10.0
+```
+```
+$ lsusb | grep 8812
+Bus 001 Device 002: ID 0bda:8812 Realtek Semiconductor Corp. 
+```
+
+for building RTL8812AU/RTL8821AU driver type(default: i386):
 
 `$ make`
 
+for building RTL8812AU/RTL8821AU driver for s3c2440 type:
+
+`$ mv Makefile_s3c2440 Makefile`
+`$ make`
 
 for building RTL8814 driver type:
 
@@ -21,6 +36,15 @@ for building driver with debug output type:
 or
 
 `$ make RTL8814=1 DEBUG=1`
+
+for install the driver type:
+
+`$ sudo insmod 8812au.ko`
+
+for uninstall the driver type:
+`$ sudo rmmod 8812au`
+
+(tocheck: put ko into /lib/...)
 
 for setting monitor mode
 
