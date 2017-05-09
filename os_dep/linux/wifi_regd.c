@@ -320,9 +320,14 @@ static void _rtw_reg_apply_flags(struct wiphy *wiphy)
 				ch = &sband->channels[j];
 
 				if (ch)
+                    #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
 					ch->flags &= ~(IEEE80211_CHAN_DISABLED|IEEE80211_CHAN_NO_HT40PLUS|
 						IEEE80211_CHAN_NO_HT40MINUS|IEEE80211_CHAN_NO_80MHZ|
 						IEEE80211_CHAN_NO_160MHZ);
+                    #else
+                    ch->flags &= ~(IEEE80211_CHAN_DISABLED|IEEE80211_CHAN_NO_HT40PLUS|
+						IEEE80211_CHAN_NO_HT40MINUS);
+                    #endif
 			}
 		}
 	}

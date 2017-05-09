@@ -67,7 +67,9 @@ u32 GlobalDebugLevel = _drv_err_;
 
 void dump_drv_version(void *sel)
 {
-	DBG_871X_SEL_NL(sel, "%s %s\n", DRV_NAME, DRIVERVERSION);
+	DBG_871X_SEL_NL(sel, "%s %s Kernel: %d.%d.%d built: %s %s\n", DRV_NAME, DRIVERVERSION, 
+            LINUX_VERSION_CODE>>16&0xff, LINUX_VERSION_CODE>>8&0xff, LINUX_VERSION_CODE&0xff,
+            __DATE__, __TIME__);
 }
 
 void dump_drv_cfg(void *sel)

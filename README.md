@@ -22,6 +22,7 @@ for building RTL8812AU/RTL8821AU driver type(default: i386):
 for building RTL8812AU/RTL8821AU driver for s3c2440 type:
 
 `$ mv Makefile_s3c2440 Makefile`
+
 `$ make`
 
 for building RTL8814 driver type:
@@ -42,6 +43,7 @@ for install the driver type:
 `$ sudo insmod 8812au.ko`
 
 for uninstall the driver type:
+
 `$ sudo rmmod 8812au`
 
 (tocheck: put ko into /lib/...)

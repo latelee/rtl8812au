@@ -6329,6 +6329,8 @@ static void rtw_cfg80211_init_ht_capab(_adapter *padapter, struct ieee80211_sta_
 	
 }
 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
+
 static void rtw_cfg80211_create_vht_cap(struct ieee80211_sta_vht_cap *vht_cap)
 {
 	u16 mcs_map;
@@ -6345,6 +6347,7 @@ static void rtw_cfg80211_create_vht_cap(struct ieee80211_sta_vht_cap *vht_cap)
 	vht_cap->vht_mcs.rx_mcs_map = cpu_to_le16(mcs_map);
 	vht_cap->vht_mcs.tx_mcs_map = cpu_to_le16(mcs_map);
 }
+#endif
 
 void rtw_cfg80211_init_wiphy(_adapter *padapter)
 {
@@ -6368,7 +6371,9 @@ void rtw_cfg80211_init_wiphy(_adapter *padapter)
 		bands = wiphy->bands[IEEE80211_BAND_5GHZ];
 		if(bands) {
 			rtw_cfg80211_init_ht_capab(padapter, &bands->ht_cap, IEEE80211_BAND_5GHZ, rf_type);
+            #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))  // check for kernel source...
 			rtw_cfg80211_create_vht_cap(&bands->vht_cap);
+            #endif
 		}
 	}
 #endif

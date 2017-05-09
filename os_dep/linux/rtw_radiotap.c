@@ -20,6 +20,17 @@
 #include <net/ieee80211_radiotap.h>
 #include <asm/unaligned.h>
 
+//#if (LINUX_VERSION_CODE < KERNEL_VERSION(3, 7, 0))
+#ifndef IEEE80211_RADIOTAP_AMPDU_STATUS
+#define IEEE80211_RADIOTAP_AMPDU_STATUS 20
+#endif
+
+#ifndef IEEE80211_RADIOTAP_VHT
+#define IEEE80211_RADIOTAP_VHT 21
+#endif
+
+//#endif
+
 /* function prototypes and related defs are in include/net/cfg80211.h */
 
 static const struct radiotap_align_size rtap_namespace_sizes[] = {

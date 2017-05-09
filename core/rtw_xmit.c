@@ -25,6 +25,10 @@
 #error "Shall be Linux or Windows, but not both!\n"
 #endif
 
+#ifndef IEEE80211_RADIOTAP_VHT
+#define IEEE80211_RADIOTAP_VHT 21
+#endif
+
 
 static u8 P802_1H_OUI[P80211_OUI_LEN] = { 0x00, 0x00, 0xf8 };
 static u8 RFC1042_OUI[P80211_OUI_LEN] = { 0x00, 0x00, 0x00 };
